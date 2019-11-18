@@ -1,6 +1,7 @@
 @file: JvmName("Rubik")
+@file:JvmMultifileClass
 
-package com.contafu.rubik.screen
+package com.contafu.rubik
 
 import android.content.Context
 

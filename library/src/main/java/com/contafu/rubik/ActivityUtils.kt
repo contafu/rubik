@@ -47,12 +47,22 @@ fun Activity.setNavigationBarColor(@ColorInt colorInt: Int = Color.TRANSPARENT) 
     }
 }
 
+const val BOTTOM = 0
+const val CENTER = 1
+const val TOP = 2
+
 /**
- * Toast
  * @param message 消息内容
+ * @param position 消息位置
  */
-fun Context.toast(message: String) {
+@JvmOverloads
+fun Context.toast(message: String, position: Int = BOTTOM) {
+    val _position = if (BOTTOM != position && CENTER != position && TOP != position) 0 else position
     Toast.makeText(this, message, Toast.LENGTH_SHORT).apply {
-        setGravity(Gravity.CENTER, 0, 0)
+        when (_position) {
+            BOTTOM -> setGravity(Gravity.BOTTOM, 0, 0)
+            CENTER -> setGravity(Gravity.CENTER, 0, 0)
+            TOP -> setGravity(Gravity.TOP, 0, 0)
+        }
     }.show()
 }

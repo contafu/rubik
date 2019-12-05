@@ -11,7 +11,7 @@ import android.view.View
  * @param block 点击回调
  */
 @JvmSynthetic
-fun View.onFilterShakeClick(time: Long = 600, block: (View) -> Unit) {
+inline fun View.onFilterShakeClick(time: Long = 600, crossinline block: (View) -> Unit) {
     var pressDownPoint = System.currentTimeMillis()
     setOnClickListener {
         var interval = time

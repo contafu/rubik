@@ -15,7 +15,7 @@ import kotlin.concurrent.timer
  * @param heartBeat 间隔心跳
  */
 @JvmSynthetic
-inline fun CoroutineScope.cd(interval: Long, crossinline heartBeat: () -> Boolean) {
+private inline fun CoroutineScope.cd(interval: Long, crossinline heartBeat: () -> Boolean) {
     launch(Dispatchers.IO) {
         timer(name = "Tomas CD", period = 1000L) {
             if (heartBeat.invoke()) {
